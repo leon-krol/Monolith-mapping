@@ -40,7 +40,7 @@
   mapPath: /Maps/_Mono/Shuttles/tokarev.yml
   minPlayers: 0
   stations:
-      Tokarev:
+    Tokarev:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup

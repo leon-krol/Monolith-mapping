@@ -10,10 +10,7 @@
 // SPDX-FileCopyrightText: 2024 TemporalOroboros
 // SPDX-FileCopyrightText: 2024 deltanedas
 // SPDX-FileCopyrightText: 2025 Ark
-// SPDX-FileCopyrightText: 2025 J
 // SPDX-FileCopyrightText: 2025 Redrover1760
-// SPDX-FileCopyrightText: 2025 ScarKy0
-// SPDX-FileCopyrightText: 2025 Tayrtahn
 // SPDX-FileCopyrightText: 2025 metalgearsloth
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
@@ -52,6 +49,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Threading;
 using Robust.Shared.Utility;
+using Robust.Shared.Timing; // Mono
 using ChunkIndicesEnumerator = Robust.Shared.Map.Enumerators.ChunkIndicesEnumerator;
 
 namespace Content.Server.Parallax;
@@ -360,7 +358,6 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
             _activeChunks.Add(biome, _tilePool.Get());
             _markerChunks.GetOrNew(biome);
         }
-
         // Get chunks in range
         foreach (var pSession in Filter.GetAllPlayers(_playerManager))
         {
@@ -406,6 +403,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
 
         while (loadBiomes.MoveNext(out var gridUid, out var biome, out var grid))
         {
+
             // If not MapInit don't run it.
             if (biome.LifeStage < ComponentLifeStage.Running)
                 continue;
@@ -416,7 +414,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
             // Load new chunks
             LoadChunks(biome, gridUid, grid, biome.Seed);
             // Unload old chunks
-            UnloadChunks(biome, gridUid, grid, biome.Seed);
+            //UnloadChunks(biome, gridUid, grid, biome.Seed); // Mono this fixes lag no really
         }
 
         _handledEntities.Clear();
@@ -1031,7 +1029,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
             return;
 
         EnsureComp<MapGridComponent>(mapUid);
-        var biome = (BiomeComponent)EntityManager.ComponentFactory.GetComponent(typeof(BiomeComponent));
+        var biome = EntityManager.ComponentFactory.GetComponent<BiomeComponent>();
         seed ??= _random.Next();
         SetSeed(mapUid, biome, seed.Value, false);
         SetTemplate(mapUid, biome, biomeTemplate, false);
@@ -1055,6 +1053,9 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         EnsureComp<RoofComponent>(mapUid);
 
         EnsureComp<LightCycleComponent>(mapUid);
+
+        EnsureComp<SunShadowComponent>(mapUid);
+        EnsureComp<SunShadowCycleComponent>(mapUid);
 
         var moles = new float[Atmospherics.AdjustedNumberOfGases];
         moles[(int)Gas.Oxygen] = 21.824779f;

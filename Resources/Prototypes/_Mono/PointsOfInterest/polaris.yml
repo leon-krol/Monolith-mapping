@@ -1,3 +1,4 @@
+# SPDX-FileCopyrightText: 2025 Redrover1760
 # SPDX-FileCopyrightText: 2025 starch
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
@@ -15,13 +16,13 @@
   id: Polaris
   parent: BasePOI
   name: 'Polaris Bioresearch Center'
-  minimumDistance: 4560
-  maximumDistance: 7520
+  minimumDistance: 5500
+  maximumDistance: 12500
   spawnGroup: Required
   gridPath: /Maps/_Mono/POI/polaris.yml
   addComponents:
   - type: IFF
-    color: "#ccaa55"
+    color: "#C83737"
     flags: [HideLabel]
     readOnly: true
 
@@ -32,9 +33,10 @@
   minPlayers: 0
   stations:
     Polaris:
-      stationProto: RecordsFrontierOutpostCargo
+      stationProto: StandardFrontierOutpost
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Polaris Bioresearch Center'
-        - type: TradeCrateWildcardDestination
-          valueMultiplier: 1.5
+        - type: StationJobs
+          availableJobs: {}
+        - type: StationDeadDropHintExempt

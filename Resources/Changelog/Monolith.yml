@@ -8780,3 +8780,45 @@ Entries:
   id: 989
   time: '2025-07-25T09:57:19.0000000+00:00'
   url: https://github.com/Monolith-Station/Monolith/pull/1578
+- author: Nope1356
+  changes:
+    - type: Tweak
+      message: >-
+        Rewrote description to be less murder murder kill kill stabby stab. Too
+        provocative and encouraged killing literally everyone. Do Not Fucking
+        Kill Everyone You Idiotic Luddites.
+  id: 990
+  time: '2025-07-25T16:54:41.0000000+00:00'
+  url: https://github.com/Monolith-Station/Monolith/pull/1611
+- author: starch70
+  changes:
+    - type: Add
+      message: >-
+        Added an alternate jumpsuit option for TSF in a nice desert tan. Also
+        added blue armbands to TSF jumpsuits.
+    - type: Add
+      message: >-
+        TSFMC gets unique chest rigs now. and TSFMCdrobe has been updated for
+        new TSF drip.
+    - type: Add
+      message: >-
+        TSF can now get tactical backpacks in loadout, and helmets/hats aren't
+        required now. Get kevlar on your head anyways.
+    - type: Tweak
+      message: >-
+        Changed TSFMC and Rogues department name (the category in crew
+        monitoring/character creator)
+  id: 991
+  time: '2025-07-25T18:51:52.0000000+00:00'
+  url: https://github.com/Monolith-Station/Monolith/pull/1605
+- author: starch70
+  changes:
+    - type: Add
+      message: Engineering, Rogue, and Admin PDAs now have inbuilt geiger counters.
+    - type: Tweak
+      message: >-
+        Changed bananium generators to not use geiger counter SFX. What was that
+        even about.
+  id: 992
+  time: '2025-07-25T18:53:47.0000000+00:00'
+  url: https://github.com/Monolith-Station/Monolith/pull/1603
